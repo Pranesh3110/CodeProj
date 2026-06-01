@@ -1,0 +1,26 @@
+import{test}from '@playwright/test'
+//import { parseEnv } from 'node:util'
+test('validate dropdown practice', async({page}) =>{
+await page.goto('https://testautomationpractice.blogspot.com/')
+await page.locator('//input[@id="name"]').fill('Pranesh')
+await page.locator('//input[@id="email"]').fill('pranesh31@gmail.com')
+await page.locator('//input[@id="phone"]').fill('9345789709')
+await page.locator('//textarea[@id="textarea"]').fill('Perungudi,chennai-96')
+await page.locator('//input[@id="male"]').click('Male')
+await page.locator('//input[@id="monday"]').check('monday')
+await page.locator('//input[@id="wednesday"]').check('Wednesday')
+await page.locator('//input[@id="friday"]').check('Friday')
+const country=await page.locator('//select[@id="country"]')
+await country.selectOption({label: "India"})
+const coun = await country.locator('option checked').allTextContents()
+console.log("Select country:",coun)
+const col = await page.locator('//select[@id="colors"]')
+await col.scrollIntoViewIfNeeded([{index:2},{value:"yellow"},{label:"white"}])
+const colo = await col.locator('option checked').allTextContents()
+console.log("Multiple colours select ;",colo)
+// const singleFruit=await page.locator('//select[@id="fruits"]')
+// await singleFruit.selectOption({label : "Orange"})
+// const txt = await selectFruit.locator('option:checked').textcontent()
+// console.log('Show Selected Fruit:',txt)
+
+})
