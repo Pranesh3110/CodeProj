@@ -23,7 +23,7 @@ await page.locator('//button[@class="btn btn-primary"]').click()
 
 await page.once('dialog',async(dialog)=>{
     await console.log("Prompt Alert Message:",dialog.message())
-    await dialog.accept("Hi Pranesh")
+    await dialog.accept("Hi Mani")
     
 })
 
